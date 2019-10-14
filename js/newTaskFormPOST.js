@@ -10,7 +10,7 @@ window.addEventListener('load', function() {
           alert('Задача успешно добавлена');
           window.location.href="current.php";
         } else {
-          alert('Задача не добавлена'); //switch case with "not authorized"
+          alert('Задача не добавлена'+this.responseXML);
         }
       }
     };
