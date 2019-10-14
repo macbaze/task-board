@@ -13,7 +13,11 @@ window.addEventListener('load', function() {
           alert('Задача успешно изменена');
           window.location.href="current.php";
         } else {
-          alert('Задача не изменена'); //switch case with "not authorized"
+          if (this.status == 403) {
+            alert('Нет прав для изменения задачи');
+            window.location.href="login.php";
+          }
+          alert('Задача не изменена\n'+this.responseXML);
         }
       }
     };

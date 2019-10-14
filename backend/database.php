@@ -67,6 +67,8 @@ class tasksDB {
   public function editTask($taskObj) {
     if ($taskObj->edited) {
       $editedSQLpart = ", edited='1'";
+    } else {
+      $editedSQLpart = '';
     }
     $sql = "UPDATE tasks SET username='{$taskObj->user}', email='{$taskObj->email}', description='{$taskObj->text}', done='{$taskObj->done}'{$editedSQLpart} WHERE id='{$taskObj->id}'";
     if (!$this->mysqli->query($sql)) {
