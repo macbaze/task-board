@@ -19,7 +19,7 @@ function checkSession() { //check if user is admin and sets "admin"
 }
 
 function logout() {
-  if (isset($_SESSION)) {
+  if (isset($_SESSION['admHash'])) {
     session_unset();
     session_destroy();
   }
