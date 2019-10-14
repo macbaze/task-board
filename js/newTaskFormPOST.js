@@ -11,7 +11,7 @@ window.addEventListener('load', function() {
         }
       }
     };
-    xmlhttp.open('POST','./backend/formProces.php');
+    xmlhttp.open('POST','./backend/formProcess.php');
     xmlhttp.send(formData);
   });
 });
