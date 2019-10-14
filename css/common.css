@@ -14,10 +14,10 @@
 }
 .sort-toggle:hover,
 .sort-toggle.active:hover {
-  background-color: rgba(255,255,255,0.2);
+  background-color: rgba(128,128,128,0.2);
 }
 .sort-toggle.active {
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(128,128,128,0.5);
 }
 body > form {
   max-width: 300pt;
