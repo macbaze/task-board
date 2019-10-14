@@ -1,7 +1,7 @@
 window.addEventListener('load', function() {
   document.forms.addTask.addEventListener('submit', function() {
     event.preventDefault();
-    var formData = new FormData(document.forms.addTask);
+    var formData = new FormData(this);
     formData.append('formName','addTask');
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
