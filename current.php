@@ -21,10 +21,5 @@ include('backend/task.php');
 $tasksCount = 0;
 $tasks = getTasks($page, $sortField, $sortDirection, $tasksCount);
 
-
-if($tasksCount>0) {
-  include('view/currentTasks.php');
-} else {
-  include('view/noTasks.php');
-}
+include('view/currentTasks.php');
 ?>

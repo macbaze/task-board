@@ -34,7 +34,9 @@ include('parts/menu.php');
     </tr>
   </thead>
   <tbody>
-<?php foreach ($tasks as $task) :?>
+<?php 
+if (count($tasks) > 0) {
+  foreach ($tasks as $task) :?>
     <tr>
       <td scope="row"><?=$task->user;?></td>
       <td><?=$task->email;?></td>
@@ -55,7 +57,12 @@ include('parts/menu.php');
         </div>
       </td>
     </tr>
-<?php endforeach;?>
+<?php endforeach;
+} else { ?>
+  <tr>
+    <td colspan="4" class="text-center">Задач нет</td>
+  </tr>
+<?php } ?> 
   </tbody>
 </table>
 <?php
