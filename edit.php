@@ -8,10 +8,11 @@ if ($adminAccount && isset($_GET['id'])) {
   );
   if ($id = filter_var($_GET['id'], FILTER_VALIDATE_INT, $options)) {
     include('backend/task.php');
-    $task = getOneTask($id);
-    include('view/editTask.php');
-    exit; //prevent redirect
+    if($task = getOneTask($id)) {
+      include('view/editTask.php');
+      exit; //prevent redirect
+    }
   }
 }
-header("Location: current.php"); //will redirect only if there are problems
+//header("Location: current.php"); //will redirect only if there are problems
 ?>

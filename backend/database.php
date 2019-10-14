@@ -30,6 +30,17 @@ class tasksDB {
     return $temp_rows;
   }
 
+  public function queryOneTask($id) {
+    $sql = "SELECT * FROM tasks WHERE id='$id' LIMIT 1";
+    if (!$result = $this->mysqli->query($sql)) {
+      $this->showErrorInfo($sql);
+    }
+    if ($row = $result->fetch_assoc()) {
+      return $row;
+    }
+    return false;
+  }
+
   public function countTasks() {
     $temp_number = 0;
 
@@ -39,7 +50,8 @@ class tasksDB {
     }
     if ($row = $result->fetch_assoc()) {
       $temp_number = $row['cnt'];
-    }
+    }   //if else $temp_number will be '0'
+
     return $temp_number;
   }
 

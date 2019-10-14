@@ -3,7 +3,8 @@ $pageTitle = 'Редактирование задачи';
 include('parts/pageHeader.php');
 include('parts/menu.php');
 ?>
-<form class="needs-validation mx-auto" method="POST" name="editTask" novalidate>
+<form class="needs-validation mx-auto" name="editTask" novalidate>
+  <input type="text" name="id" value="<?=$task->id?>" hidden>
   <div class="form-group">
     <label for="uname">Имя пользователя</label>
     <input type="text" class="form-control" id="uname" placeholder="Введите имя пользователя" name="username" required value="<?=$task->user?>">

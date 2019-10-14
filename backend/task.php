@@ -36,6 +36,15 @@ function getTasks($page, $sField, $sDirection, &$tasksCountPtr) {
   return $temp_tasks;
 }
 
+function getOneTask($id) {
+  $DBconnection = new tasksDB();
+  if($task_row = $DBconnection->queryOneTask($id)) {
+    $taskObj = new Task($task_row['username'], $task_row['email'], $task_row['description'], $task_row['done'], $task_row['edited'], $task_row['id']);
+    return $taskObj;
+  }
+  return false;
+}
+
 function addTask($user, $email, $text) {
   $temp_task = new Task($user, $email, $text);
   $DBconnection = new tasksDB();
