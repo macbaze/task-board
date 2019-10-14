@@ -3,7 +3,7 @@ window.addEventListener('load', function() {
     event.preventDefault();
     var formData = new FormData(this);
     formData.append('formName','editTask');
-    if (formData.get('text') != this.elements.previousText.value) {
+    if (this.elements.text.value != this.elements.previousText.value) {
       formData.append('edited', 1);
     }
     var xmlhttp = new XMLHttpRequest();

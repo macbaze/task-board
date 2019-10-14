@@ -38,7 +38,7 @@ include('parts/menu.php');
     <tr>
       <td scope="row"><?=$task->user;?></td>
       <td><?=$task->email;?></td>
-      <td><?=$task->text;?></td>
+      <td><?=nl2br($task->text);?></td>
       <td>
         <div class="d-flex flex-wrap">
           <?php
