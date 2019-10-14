@@ -10,19 +10,19 @@ class tasksDB {
     }
   }
 
+  private function showErrorInfo($sql) {
+    echo "Запрос: " . $sql . "\n";
+    echo "Номер ошибки: " . $this->mysqli->errno . "\n";
+    echo "Ошибка: " . $this->mysqli->error . "\n";
+    exit;
+  }
+
   public function queryTasks($DBoffset, $DBsortField, $DBsortDirection) {
     $temp_rows = array();
 
     $sql = "SELECT * FROM tasks ORDER BY $DBsortField $DBsortDirection LIMIT $DBoffset, 3";
     if (!$result = $this->mysqli->query($sql)) {
-        echo "Запрос: " . $sql . "\n";
-        echo "Номер ошибки: " . $this->mysqli->errno . "\n";
-        echo "Ошибка: " . $this->mysqli->error . "\n";
-        exit;
-    }
-    if ($result->num_rows === 0) {
-      echo "Пустая выборка";
-      exit;
+      $this->showErrorInfo($sql);
     }
     while ($row = $result->fetch_assoc()) {
       $temp_rows[] = $row;
@@ -35,19 +35,21 @@ class tasksDB {
 
     $sql = "SELECT COUNT(*) as cnt FROM tasks";
     if (!$result = $this->mysqli->query($sql)) {
-        echo "Запрос: " . $sql . "\n";
-        echo "Номер ошибки: " . $this->mysqli->errno . "\n";
-        echo "Ошибка: " . $this->mysqli->error . "\n";
-        exit;
-    }
-    if ($result->num_rows === 0) {
-      echo "Пустая выборка";
-      exit;
+      $this->showErrorInfo($sql);
     }
     if ($row = $result->fetch_assoc()) {
       $temp_number = $row['cnt'];
     }
     return $temp_number;
+  }
+
+  public function insertTask($taskObj) {
+    $sql = "INSERT INTO tasks (username, email, description)
+      VALUES ('{$taskObj->user}', '{$taskObj->email}', '{$taskObj->text}')";
+
+    if (!$this->mysqli->query($sql)) {
+      $this->showErrorInfo($sql);
+    }
   }
 }
 ?>

@@ -8,4 +8,4 @@
     <script src="js/urlProcessing.js"></script>
     <title><?=$pageTitle?></title>
 </head>
-<body>
+<body class="px-3">

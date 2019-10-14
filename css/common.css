@@ -5,18 +5,20 @@
     width: 40%;
 }
 .sort-toggle {
-	border: none;
-	border-radius: 3pt;
-    background: none;
-    font: inherit;
-    padding: 0 2pt;
-    margin: 0;
-    margin-left: auto;
-    float: right;
+  border: none;
+  border-radius: 3pt;
+  background: none;
+  font: inherit;
+  padding: 0 2pt;
+  margin: 0;
 }
-.sort-toggle:hover {
-	background-color: rgba(255,255,255,0.2);
+.sort-toggle:hover,
+.sort-toggle.active:hover {
+  background-color: rgba(255,255,255,0.2);
 }
 .sort-toggle.active {
     background-color: rgba(255,255,255,0.5);
+}
+body > form {
+  max-width: 300pt;
 }
