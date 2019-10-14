@@ -1,6 +1,6 @@
 <?php
 class tasksDB {
-  private $mysqli;
+  private $mysqli; //db connection handle
 
   public function __construct() {
     $this->mysqli = new mysqli('127.0.0.1', 'taskBoard', 'task123', 'task-board');
@@ -17,7 +17,7 @@ class tasksDB {
     exit;
   }
 
-  public function queryTasks($DBoffset, $DBsortField, $DBsortDirection) {
+  public function queryTasks($DBoffset, $DBsortField, $DBsortDirection) { //query all 'tasks' table rows
     $temp_rows = array();
 
     $sql = "SELECT * FROM tasks ORDER BY $DBsortField $DBsortDirection LIMIT $DBoffset, 3";
@@ -30,7 +30,7 @@ class tasksDB {
     return $temp_rows;
   }
 
-  public function queryOneTask($id) {
+  public function queryOneTask($id) { //query task with id=$id
     $sql = "SELECT * FROM tasks WHERE id='$id' LIMIT 1";
     if (!$result = $this->mysqli->query($sql)) {
       $this->showErrorInfo($sql);
@@ -41,7 +41,7 @@ class tasksDB {
     return false;
   }
 
-  public function countTasks() {
+  public function countTasks() {  //returns total count of tasks used in pagination
     $temp_number = 0;
 
     $sql = "SELECT COUNT(*) as cnt FROM tasks";
@@ -65,7 +65,7 @@ class tasksDB {
   }
 
   public function editTask($taskObj) {
-    if ($taskObj->edited) {
+    if ($taskObj->edited) { //edited should be permanent. can't become 0 again
       $editedSQLpart = ", edited='1'";
     } else {
       $editedSQLpart = '';

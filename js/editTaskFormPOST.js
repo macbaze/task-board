@@ -1,11 +1,14 @@
 window.addEventListener('load', function() {
   document.forms.editTask.addEventListener('submit', function(event) {
     event.preventDefault();
+    
     var formData = new FormData(this);
     formData.append('formName','editTask');
+    
     if (this.elements.text.value != this.elements.previousText.value) {
       formData.append('edited', 1);
     }
+    
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4) {
@@ -21,6 +24,7 @@ window.addEventListener('load', function() {
         }
       }
     };
+    
     xmlhttp.open('POST','./backend/formProcess.php');
     xmlhttp.send(formData);
   });

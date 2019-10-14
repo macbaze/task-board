@@ -15,4 +15,4 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <a class="nav-item nav-link" href="login.php?logout">Выход</a>
   <?php endif;?>
 </nav>
-<h2 class="text-center"><?=$pageTitle?></h2>
+<h2 class="text-center"><?=$pageTitle?></h2> <!--just for understanding where you are now-->

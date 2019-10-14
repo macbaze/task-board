@@ -1,8 +1,10 @@
 window.addEventListener('load', function() {
   document.forms.addTask.addEventListener('submit', function() {
     event.preventDefault();
+    
     var formData = new FormData(this);
     formData.append('formName','addTask');
+    
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4) {
@@ -14,6 +16,7 @@ window.addEventListener('load', function() {
         }
       }
     };
+    
     xmlhttp.open('POST','./backend/formProcess.php');
     xmlhttp.send(formData);
   });

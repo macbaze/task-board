@@ -14,7 +14,7 @@ if ($pagesCount <= 10) {
 			</li>
 		<?php endif;
 	}
-}
+}	//i dont really want to take care about 10+ pages
 ?>
   </ul>
 </nav>

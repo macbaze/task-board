@@ -20,16 +20,18 @@ class Task
   }
 }
 
-function getTasks($page, $sField, $sDirection, &$tasksCountPtr) {
-  if($page>1){
+function getTasks($page, $sField, $sDirection, &$tasksCountPtr) { //last param is used for pagination calculation
+  $temp_tasks = array();
+
+  if ($page > 1) {
     $offset = ($page - 1) * 3;
   } else {
     $offset = 0;
   }
-  $temp_tasks = array();
+  
   $DBconnection = new tasksDB();
   $task_rows = $DBconnection->queryTasks($offset, $sField, $sDirection);
-  $tasksCountPtr = $DBconnection->countTasks();
+  $tasksCountPtr = $DBconnection->countTasks(); //writes total tasks count to this var
   foreach ($task_rows as $row) {
     $temp_tasks[] = new Task($row['username'], $row['email'], $row['description'], $row['done'], $row['edited'], $row['id']);
   }

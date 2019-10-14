@@ -3,6 +3,7 @@ $pageTitle = 'Текущие задачи';
 include('parts/pageHeader.php');
 include('parts/menu.php');
 ?>
+<script src="js/urlProcessing.js"></script>
 <table class="table<?=($adminAccount)?' table-hover':'';?>">
   <thead class="thead-light">
     <tr>

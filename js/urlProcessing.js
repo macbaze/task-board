@@ -1,5 +1,5 @@
 function changePage(elem) {
-	var pageN = elem.innerHTML; //filter this 
+	var pageN = elem.innerHTML; //filter this?
 	var params = window.location.search.substr(1).split("&");
 	var url = "";
 	for (var i = 0; i < params.length; i++) {
@@ -12,7 +12,7 @@ function changePage(elem) {
 
 function changeSorting(elem) {
 	var sortField = elem.getAttribute('field');
-	var sortDirection = elem.getAttribute('direction'); //every sorting change redirects to the first page of results. it's ok
+	var sortDirection = elem.getAttribute('direction'); //every sorting change redirects to the first page of results. it's ok in my mind
 	var url = '?s_field='+sortField+'&s_dir='+sortDirection;
 	window.location.href = url;
 }

@@ -2,7 +2,7 @@
 $pageTitle = 'Вход администратора';
 include('parts/pageHeader.php');
 include('parts/menu.php');
-if ($loginFailed) :
+if ($loginFailed) : //the other way to do this: let JS to display errors. AJAX should be here but i'm tired
 ?>
   <div class="alert alert-danger">
     <strong>Ошибка!</strong> Введённые данные неверны
