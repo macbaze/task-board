@@ -3,13 +3,15 @@ include('database.php');
 
 class Task
 {
-    public $user;
-    public $email;
-    public $text;
-    public $done;
-    public $edited;
+  public $id;
+  public $user;
+  public $email;
+  public $text;
+  public $done;
+  public $edited;
 
-  public function __construct($user, $email, $text, $done = 0, $edited = 0) {
+  public function __construct($user, $email, $text, $done = 0, $edited = 0, $id=0) {
+    $this->id = $id;
     $this->user = $user;
     $this->email = $email;
     $this->text = $text;
@@ -29,7 +31,7 @@ function getTasks($page, $sField, $sDirection, &$tasksCountPtr) {
   $task_rows = $DBconnection->queryTasks($offset, $sField, $sDirection);
   $tasksCountPtr = $DBconnection->countTasks();
   foreach ($task_rows as $row) {
-    $temp_tasks[] = new Task($row['username'], $row['email'], $row['description'], $row['done'], $row['edited']);
+    $temp_tasks[] = new Task($row['username'], $row['email'], $row['description'], $row['done'], $row['edited'], $row['id']);
   }
   return $temp_tasks;
 }
