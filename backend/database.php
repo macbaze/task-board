@@ -63,5 +63,12 @@ class tasksDB {
       $this->showErrorInfo($sql);
     }
   }
+
+  public function editTask($taskObj) {
+    $sql = "UPDATE tasks SET username='{$taskObj->user}', email='{$taskObj->email}', description='{$taskObj->text}', done='{$taskObj->done}', edited='{$taskObj->edited}' WHERE id='{$taskObj->id}'";
+    if (!$this->mysqli->query($sql)) {
+      $this->showErrorInfo($sql);
+    }
+  }
 }
 ?>

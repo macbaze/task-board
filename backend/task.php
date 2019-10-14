@@ -50,4 +50,10 @@ function addTask($user, $email, $text) {
   $DBconnection = new tasksDB();
   $DBconnection->insertTask($temp_task);
 }
+
+function editTask($user, $email, $text, $done, $edited, $id) {
+  $temp_task = new Task($user, $email, $text, $done, $edited, $id);
+  $DBconnection = new tasksDB();
+  $DBconnection->editTask($temp_task);
+}
 ?>

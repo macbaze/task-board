@@ -14,5 +14,5 @@ if ($adminAccount && isset($_GET['id'])) {
     }
   }
 }
-//header("Location: current.php"); //will redirect only if there are problems
+header("Location: current.php"); //will redirect only if there are problems
 ?>

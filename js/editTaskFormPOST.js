@@ -1,16 +1,16 @@
 window.addEventListener('load', function() {
-  document.forms.addTask.addEventListener('submit', function() {
+  document.forms.editTask.addEventListener('submit', function(event) {
     event.preventDefault();
-    var formData = new FormData(document.forms.addTask);
-    formData.append('formName','addTask');
+    var formData = new FormData(document.forms.editTask);
+    formData.append('formName','editTask');
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
       if (this.readyState == 4) {
         if (this.status == 200) {
-          alert('Задача успешно добавлена');
+          alert('Задача успешно изменена');
           window.location.href="current.php";
         } else {
-          alert('Задача не добавлена'); //switch case with "not authorized"
+          alert('Задача не изменена'); //switch case with "not authorized"
         }
       }
     };
