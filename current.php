@@ -1,21 +1,25 @@
 <?php
 include('backend/auth.php');
 
-if (isset($_GET['s_field']) && $_GET['s_field']!="") {
+$possibleFieldValues = array('username', 'email', 'done');
+if (isset($_GET['s_field']) && in_array($_GET['s_field'], $possibleFieldValues)) {
   $sortField = $_GET['s_field'];
 } else {
   $sortField = 'id';
 }
-if (isset($_GET['s_dir']) && $_GET['s_dir']!="") {
+
+$possibleDirValues = array('ASC', 'DESC');
+if (isset($_GET['s_dir']) && in_array($_GET['s_dir'], $possibleDirValues)) {
   $sortDirection = $_GET['s_dir'];
 } else {
   $sortDirection = 'DESC';
 }
-if (isset($_GET['page']) && $_GET['page']!="") {
-  $page = $_GET['page'];
+
+if (isset($_GET['page']) && is_numeric($_GET['page']) && intval($_GET['page']>0)) {
+  $page = intval($_GET['page']); //if page number is too big - result table will be empty
 } else {
   $page = 1;
-}                           //debug. filter vars before mysql query
+}
 
 include('backend/task.php');
 $tasksCount = 0;

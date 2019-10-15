@@ -1,14 +1,9 @@
 <?php
 include('backend/auth.php');
-if ($adminAccount && isset($_GET['id'])) {
-  $options = array(
-    'options' => array(
-        'min_range' => 1
-    )
-  );
-  if ($id = filter_var($_GET['id'], FILTER_VALIDATE_INT, $options)) {
+if ($adminAccount && isset($_GET['id']) && is_numeric($_GET['id'])) {
+  if (intval($_GET['id'] > 0)) {
     include('backend/task.php');
-    if($task = getOneTask($id)) {
+    if($task = getOneTask(intval($_GET['id']))) {
       include('view/editTask.php');
       exit; //prevent redirect
     }
